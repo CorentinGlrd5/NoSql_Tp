@@ -85,8 +85,15 @@ Mettre à jour tous les element qui on besoins d'une team en ajoutant des joueur
 db.sports.updateOne({ _id: ObjectId("5e7889b920eeb69b4863dd7a")}, { $inc: { team: 10 } })
 ```
 
+```bash
+db.sports.update(
+   { },
+   { $push: { teams: { $each: [ { name: "toto3", titulaire: "true" } ] } } }
+)
+```
+
 Dans tous les element, rajouter un array teams avec deux joueurs :
 
 ```bash
-db.sports.updateMany({ _id: ObjectId("5e7889b920eeb69b4863dd7a") }, { $push: { team: { $each: [ { name: "toto", titulaire: "true" }, {name: "toto2", titulaire: "true" } ] } } })
+db.sports.updateMany({ }, { $push: { teams: { $each: [ { name: "toto", titulaire: "true" }, {name: "toto2", titulaire: "true" } ] } } })
 ```
