@@ -3,7 +3,7 @@ Ajouter 2 nouveau film : title et required teams avec upsert
 
 Mettre à jour tous les element avec une team en ajoutant un minimum de joureur
 
-Mettre à kour tous les element qui on besoins d'une team en ajoutant des joueur par 10.
+Mettre à jour tous les element qui on besoins d'une team en ajoutant des joueur par 10.
 
 Dans tous les element, rajouter un array teams avec deux joueurs
 
@@ -76,5 +76,17 @@ db.products.find().pretty()
 Mettre à jour tous les element avec une team en ajoutant un minimum de joureur :
 
 ```bash
-db.sports.insertOne({ title: "Pelé : Naissance d'une légende"}, {team: 5})
+db.sports.updateOne({ _id: ObjectId("5e7889b920eeb69b4863dd7a")}, { $set: { team: 5 } })
+```
+
+Mettre à jour tous les element qui on besoins d'une team en ajoutant des joueur par 10.
+
+```bash
+db.sports.updateOne({ _id: ObjectId("5e7889b920eeb69b4863dd7a")}, { $inc: { team: 10 } })
+```
+
+Dans tous les element, rajouter un array teams avec deux joueurs :
+
+```bash
+db.sports.updateMany({ _id: ObjectId("5e7889b920eeb69b4863dd7a") }, { $push: { team: { $each: [ { name: "toto", titulaire: "true" }, {name: "toto2", titulaire: "true" } ] } } })
 ```
