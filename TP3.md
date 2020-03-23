@@ -76,17 +76,17 @@ db.products.find().pretty()
 Mettre à jour tous les element avec une team en ajoutant un minimum de joureur :
 
 ```bash
-db.sports.updateOne({ _id: ObjectId("5e7889b920eeb69b4863dd7a")}, { $set: { team: 5 } })
+db.sports.updateMany({ }, { $set: { team: 5 } })
 ```
 
 Mettre à jour tous les element qui on besoins d'une team en ajoutant des joueur par 10.
 
 ```bash
-db.sports.updateOne({ _id: ObjectId("5e7889b920eeb69b4863dd7a")}, { $inc: { team: 10 } })
+db.sports.updateMany({ }, { $inc: { team: 10 } })
 ```
 
 ```bash
-db.sports.update(
+db.sports.updateMany(
    { },
    { $push: { teams: { $each: [ { name: "toto3", titulaire: "true" } ] } } }
 )
